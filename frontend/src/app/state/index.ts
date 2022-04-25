@@ -1,5 +1,11 @@
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { ActionReducerMap } from '@ngrx/store';
+import { RouterStateUrl } from './router-sanitizer';
 
-export interface ApplicationState {}
+export interface ApplicationState {
+  router: RouterReducerState<RouterStateUrl>;
+}
 
-export const reducers: ActionReducerMap<ApplicationState> = {};
+export const reducers: ActionReducerMap<ApplicationState> = {
+  router: routerReducer,
+};
