@@ -60,6 +60,10 @@
         class="field-errors"
         *ngIf="email?.errors && (email?.touched || email?.dirty)"
       >
+        <p *ngIf="email?.hasError('disallowedDomain')">
+          Sorry, we don't accept users from
+          {{ email?.getError("disallowedDomain") }}
+        </p>
         <p *ngIf="email?.hasError('required')">
           Give us an email. Promise we won't spam you.
         </p>
@@ -89,6 +93,10 @@
         *ngIf="username?.errors && (username?.touched || username?.dirty)"
       >
         <p *ngIf="username?.hasError('required')">We need a Username</p>
+
+        <p *ngIf="username?.hasError('noSpaces')">
+          User names cannot have spaces in them.
+        </p>
       </div>
     </div>
 

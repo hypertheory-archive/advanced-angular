@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { disallowedDomainValidator, noSpaceValidator } from '../../validators';
 
 @Component({
   selector: 'app-onboard',
@@ -10,8 +11,15 @@ export class OnboardComponent implements OnInit {
   form = this.formBuilder.group({
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    username: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
+    username: ['', [Validators.required, noSpaceValidator]],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.email,
+        disallowedDomainValidator('geico.com'),
+      ],
+    ],
     password1: ['', [Validators.required, Validators.minLength(8)]],
     password2: ['', [Validators.required, Validators.minLength(8)]],
   });
