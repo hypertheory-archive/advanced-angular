@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { disallowedDomainValidator, noSpaceValidator } from '../../validators';
+import {
+  disallowedDomainValidator,
+  noSpaceValidator,
+  passwordsMustMatchValidator,
+} from '../../validators';
 
 @Component({
   selector: 'app-onboard',
@@ -8,21 +12,24 @@ import { disallowedDomainValidator, noSpaceValidator } from '../../validators';
   styleUrls: ['./onboard.component.css'],
 })
 export class OnboardComponent implements OnInit {
-  form = this.formBuilder.group({
-    firstName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
-    username: ['', [Validators.required, noSpaceValidator]],
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.email,
-        disallowedDomainValidator('geico.com'),
+  form = this.formBuilder.group(
+    {
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      username: ['', [Validators.required, noSpaceValidator]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          disallowedDomainValidator('geico.com'),
+        ],
       ],
-    ],
-    password1: ['', [Validators.required, Validators.minLength(8)]],
-    password2: ['', [Validators.required, Validators.minLength(8)]],
-  });
+      password1: ['', [Validators.required, Validators.minLength(8)]],
+      password2: ['', [Validators.required, Validators.minLength(8)]],
+    },
+    { validators: [passwordsMustMatchValidator] }
+  );
   constructor(private formBuilder: FormBuilder) {}
   ngOnInit(): void {
     //throw new Error('Method not implemented.');

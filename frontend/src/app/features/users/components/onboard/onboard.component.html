@@ -143,10 +143,19 @@
           Make it at least 8 characters please.
         </p>
       </div>
+      <div
+        class="field-errors"
+        *ngIf="form.errors && (password2?.touched || password2?.dirty)"
+      >
+        <p *ngIf="form?.hasError('passwordsMustMatch')">
+          This does not match the password you provided.
+        </p>
+      </div>
     </div>
     <div class="described-by" id="password-description">
       Choose a good, strong password. At least 8 characters.
     </div>
   </fieldset>
+
   <button class="btn" type="submit">Create My Account</button>
 </form>
