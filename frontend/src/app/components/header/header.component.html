@@ -3,7 +3,12 @@
     <p><strong>Advanced Angular</strong></p>
   </div>
   <nav>
-    <a class="link-button" href="#">Home</a>
+    <a
+      class="link-button"
+      [routerLinkActive]="['active']"
+      [routerLink]="['users', 'onboard']"
+      >Create an Account</a
+    >
     <a
       class="link-button"
       [routerLinkActive]="['active']"
