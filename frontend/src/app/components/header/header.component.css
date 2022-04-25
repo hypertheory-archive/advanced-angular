@@ -5,3 +5,7 @@
 .link-button:hover {
   @apply bg-blue-700;
 }
+
+.link-button.active {
+  @apply bg-blue-900;
+}
