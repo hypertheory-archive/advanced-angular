@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subscription, tap } from 'rxjs';
+import { debounceTime, Subscription, tap } from 'rxjs';
 import { selectOnBoardFormData } from '../../state';
 import { OnboardFormDocuments } from '../../state/actions/onboard-form.actions';
 import { TemporaryFormState } from '../../state/reducers/onboard-form.reducer';
@@ -68,6 +68,7 @@ export class OnboardComponent implements OnInit, OnDestroy {
 
     this.form.valueChanges
       .pipe(
+        debounceTime(450),
         tap((changes) =>
           this.store.dispatch(
             OnboardFormDocuments.onboardForm({ payload: changes })
