@@ -26,7 +26,8 @@ export class OnBoardEffects {
     () => {
       return this.actions$.pipe(
         ofType(OnboardFormEvents.accountCreatedSuccessfully),
-        tap(() => this.router.navigate(['..', 'account-created']))
+
+        tap(() => this.router.navigate(['/users', 'account-created']))
       );
     },
     { dispatch: false }
