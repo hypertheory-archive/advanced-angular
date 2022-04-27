@@ -33,12 +33,16 @@ const selectFilteringItemsBy = createSelector(
 );
 const selectTodoItemEntities = createSelector(
   selectItemsBranch,
-  fromItems.selectAllTodoItemEtities
+  fromItems.selectAllTodoItemEntities
 );
 
 const selectNumberOfTodoItems = createSelector(
   selectItemsBranch,
   fromItems.selectTotalNumberOfTodoItems
+);
+const selectTodoItemDictionary = createSelector(
+  selectItemsBranch,
+  fromItems.selectTodoItemDictionary
 );
 
 const selectTodoItemViewModels = createSelector(
@@ -68,6 +72,9 @@ const selectItemsStats = createSelector(
     } as fromModels.FilterButtonsViewModel)
 );
 // 4. What the component needs (Models)
+
+export const selectTodoItemFromId = (id: string) =>
+  createSelector(selectTodoItemDictionary, (items) => items[id]);
 
 export const selectTodosViewModel = createSelector(
   selectTodoItemViewModels,
