@@ -1,8 +1,8 @@
 describe('The Todo List', () => {
   beforeEach(() => {
-    // cy.intercept('http://localhost:1337/todos', {
-    //   fixture: 'todos-happy.json',
-    // });
+    cy.intercept('http://localhost:1337/todos', {
+      fixture: 'todos-happy.json',
+    });
     cy.visit('/');
     cy.get('[data-todos-link]').click();
   });

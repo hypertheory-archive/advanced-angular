@@ -4,8 +4,14 @@ import { TodoItemEntity } from '../reducers/items.reducer';
 const loadingTodoItemsFailed = createAction(
   '[todos] loading todo items failed'
 );
+
+const todoItemCreated = createAction(
+  '[todos] todo item created',
+  props<{ payload: string }>()
+);
 export const ItemsEvents = {
   loadingTodoItemsFailed,
+  todoItemCreated,
 };
 
 const loadTodos = createAction('[todos] load todos');

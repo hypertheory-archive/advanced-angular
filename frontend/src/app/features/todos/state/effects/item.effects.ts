@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { routerNavigatedAction } from '@ngrx/router-store';
-import { catchError, filter, map, of, switchMap } from 'rxjs';
+import { catchError, concatMap, filter, map, of, switchMap } from 'rxjs';
 import { EnvironmentService } from 'src/app/libs/environment/environment.service';
 import {
   ItemsCommands,
@@ -15,6 +15,17 @@ import { TodoItemEntity } from '../reducers/items.reducer';
 export class ItemEffects {
   private readonly url: string;
 
+  // add  the todo...
+  addTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ItemsEvents.todoItemCreated),
+      concatMap((a) =>
+        this.client
+          .post<TodoItemEntity>(this.url, { description: a.payload })
+          .pipe(map((payload) => ItemsDocuments.todo({ payload })))
+      )
+    );
+  });
   // Command Load the todos when you navigate to todos.
   loadTheTodosOnNavigation$ = createEffect(
     () => {
