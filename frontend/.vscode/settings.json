@@ -88,10 +88,10 @@
     "src/app/featu[!r]*/**": true,
     "src/app/featur[!e]*/**": true,
     "src/app/feature[!s]*/**": true,
-    "src/app/features/[!u]*/**": true,
-    "src/app/features/u[!s]*/**": true,
-    "src/app/features/us[!e]*/**": true,
-    "src/app/features/use[!r]*/**": true,
-    "src/app/features/user[!s]*/**": true
+    "src/app/features/[!t]*/**": true,
+    "src/app/features/t[!o]*/**": true,
+    "src/app/features/to[!d]*/**": true,
+    "src/app/features/tod[!o]*/**": true,
+    "src/app/features/todo[!s]*/**": true
   }
 }
